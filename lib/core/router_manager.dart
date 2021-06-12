@@ -37,4 +37,8 @@ class RouteManager {
               ],
             ));
   }
+
+  static showSearchDelagate(SearchDelegate delegate) {
+    showSearch(context: routeContext, delegate: delegate);
+  }
 }

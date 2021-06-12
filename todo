@@ -1,9 +1,9 @@
 map design  [ x ] 
 category places [ x ]
 nearby places [ x ]
-videos [  ]
- 
+
+videos [  ] 
 give permission page [  ]
 profile [  ]
-search [  ]
-route [  ] 
+search [ x ]
+route [ x ] 

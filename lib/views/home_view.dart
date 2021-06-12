@@ -5,6 +5,7 @@ import 'package:travel/custom_theme.dart';
 import 'package:travel/services/places.dart';
 import 'package:travel/utils/utils.dart';
 import 'package:travel/views/map_view.dart';
+import 'package:travel/views/search_place.dart';
 import 'package:travel/widgets/app_advice_card.dart';
 import 'package:travel/widgets/app_card.dart';
 import '../extensions/context_extensions.dart';
@@ -43,6 +44,10 @@ class _HomeViewState extends State<HomeView> {
 class _AppBar extends StatelessWidget {
   const _AppBar({Key? key}) : super(key: key);
 
+  void openSearch() {
+    RouteManager.showSearchDelagate(SearchPlace());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -69,24 +74,27 @@ class _AppBar extends StatelessWidget {
                     borderRadius: BorderRadius.circular(100)),
                 margin:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(FontAwesomeIcons.search,
-                            color: context.primaryColor),
-                        SizedBox(width: 20),
-                        Text(
-                          'Yer arayın',
-                          style: context.textTheme.headline6!
-                              .copyWith(fontWeight: FontWeight.normal),
-                        )
-                      ],
-                    ),
-                    Icon(FontAwesomeIcons.locationArrow,
-                        color: context.primaryColor)
-                  ],
+                child: InkWell(
+                  onTap: this.openSearch,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(FontAwesomeIcons.search,
+                              color: context.primaryColor),
+                          SizedBox(width: 20),
+                          Text(
+                            'Yer arayın',
+                            style: context.textTheme.headline6!
+                                .copyWith(fontWeight: FontWeight.normal),
+                          )
+                        ],
+                      ),
+                      Icon(FontAwesomeIcons.locationArrow,
+                          color: context.primaryColor)
+                    ],
+                  ),
                 ),
               ),
             )

@@ -14,6 +14,7 @@ class Places extends ChangeNotifier {
   final String apiKey = 'AIzaSyBhkqWwerZVw_3CmtTzE1bloovjDydybLw';
 
   List<PlaceModel> nearbyPlaces = [];
+  List<PlaceModel> searchResults = [];
 
   findNearbyPlaces() async {
     final String nearbyPlacesAPI =
@@ -30,6 +31,16 @@ class Places extends ChangeNotifier {
     List results = await _sendRequest(searchNearbyAPI);
     nearbyPlaces =
         results.map((result) => PlaceModel.fromJson(result)).toList();
+    notifyListeners();
+  }
+
+  searchPlace(String place) async {
+    searchResults = [];
+    final String searchNearbyAPI =
+        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition['lat']},${currentPosition['lng']}&radius=1500&name=$place&key=$apiKey';
+    List result = await _sendRequest(searchNearbyAPI);
+    searchResults =
+        result.map((result) => PlaceModel.fromJson(result)).toList();
     notifyListeners();
   }
 

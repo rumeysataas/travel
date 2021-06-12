@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:travel/custom_theme.dart';
 import 'package:travel/views/splash_view.dart';
 
+import 'core/storage.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Storage.initialStorage();
   runApp(MyApp());
 }
 
