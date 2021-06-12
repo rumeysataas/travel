@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
+import 'package:travel/services/places.dart';
+import 'package:travel/utils/utils.dart';
 import 'package:travel/views/map_view.dart';
 import 'package:travel/widgets/app_advice_card.dart';
 import 'package:travel/widgets/app_card.dart';
@@ -21,6 +23,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       RouteManager.initializeRoute(context);
+      Utils.enableLocationPermission();
     });
   }
 
@@ -121,19 +124,26 @@ class _Places extends StatelessWidget {
                       subtitle: 'Güzel Lezzetler',
                       onTap: () {
                         RouteManager.newPage(MapView());
+                        Places.instance.filterNearbyPlaces('restaurant');
                       },
                     ),
                     AppCard(
                       imageUrl: 'bar.svg',
                       title: 'Gece Kulüpleri',
                       subtitle: 'Biraz Eğlence!',
-                      onTap: () {},
+                      onTap: () {
+                        RouteManager.newPage(MapView());
+                        Places.instance.filterNearbyPlaces('bar');
+                      },
                     ),
                     AppCard(
                       imageUrl: 'hotel.svg',
                       title: 'Konaklama',
                       subtitle: 'Kalınacak Yerler',
-                      onTap: () {},
+                      onTap: () {
+                        RouteManager.newPage(MapView());
+                        Places.instance.filterNearbyPlaces('otel');
+                      },
                     ),
                   ],
                 ),
@@ -169,7 +179,10 @@ class _Advices extends StatelessWidget {
                     AppAdviceCard(
                         icon: FontAwesomeIcons.placeOfWorship,
                         title: 'Yakında neler var?',
-                        onTap: () {}),
+                        onTap: () {
+                          RouteManager.newPage(MapView());
+                          Places.instance.findNearbyPlaces();
+                        }),
                     AppAdviceCard(
                         icon: FontAwesomeIcons.youtube,
                         title: 'Videolar',
