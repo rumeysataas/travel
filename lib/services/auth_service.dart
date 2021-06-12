@@ -19,6 +19,11 @@ class AuthService {
 
   AppUser? currentUser;
 
+  autoLogin() {
+    _findUser(FirebaseAuth.instance.currentUser);
+    RouteManager.newPageReplacement(HomeView());
+  }
+
   signUp(String email, String password, String name) async {
     if (await _controlEmail(email)) {
       UserCredential userCredential = await FirebaseAuth.instance

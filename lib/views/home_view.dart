@@ -8,7 +8,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     print(context.currentUser?.name);
     return Scaffold(
-      body: Text('${context.currentUser?.name}'),
+      body: SafeArea(child: Text('${context.currentUser?.name}')),
     );
   }
 }
