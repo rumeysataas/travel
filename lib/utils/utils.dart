@@ -14,7 +14,7 @@ class Utils {
     }
   }
 
-  static enableLocationPermission() async {
+  static enableLocationPermission({bool updateLocation = true}) async {
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -36,10 +36,15 @@ class Utils {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
     Position position = await Geolocator.getCurrentPosition();
-    Places.instance.currentPosition = {
-      'lat': position.latitude,
-      'lng': position.longitude
-    };
-    print(Places.instance.currentPosition);
+    if (updateLocation) {
+      Places.instance.currentPosition = {
+        'lat': position.latitude,
+        'lng': position.longitude
+      };
+      print(Places.instance.currentPosition);
+      print('location updated');
+    } else {
+      print('no update!');
+    }
   }
 }

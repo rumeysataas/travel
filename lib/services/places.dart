@@ -16,6 +16,7 @@ class Places extends ChangeNotifier {
   List<PlaceModel> searchResults = [];
 
   findNearbyPlaces() async {
+    print(currentPosition);
     final String nearbyPlacesAPI =
         "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition['lat']},${currentPosition['lng']}&radius=4500&key=$apiKey";
     List results = await _sendRequest(nearbyPlacesAPI);
@@ -25,6 +26,7 @@ class Places extends ChangeNotifier {
   }
 
   filterNearbyPlaces(String type) async {
+    print(currentPosition);
     final String searchNearbyAPI =
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition['lat']},${currentPosition['lng']}&radius=1500&type=$type&key=$apiKey';
     List results = await _sendRequest(searchNearbyAPI);
@@ -34,6 +36,7 @@ class Places extends ChangeNotifier {
   }
 
   searchPlace(String place) async {
+    print(currentPosition);
     searchResults = [];
     final String searchNearbyAPI =
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition['lat']},${currentPosition['lng']}&radius=1500&name=$place&key=$apiKey';

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/core/storage.dart';
+import 'package:travel/views/change_city.dart';
 import 'package:travel/views/login_view.dart';
 import '../extensions/context_extensions.dart';
 
@@ -54,7 +55,9 @@ class _UserSettingsState extends State<UserSettings> {
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                RouteManager.newPage(ChangeCity());
+              },
               title: Text('Şehir Değiştir', style: context.textTheme.headline5),
               trailing: Icon(Icons.map, color: context.primaryColor, size: 35),
             ),

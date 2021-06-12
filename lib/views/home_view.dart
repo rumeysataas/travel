@@ -13,7 +13,8 @@ import '../extensions/context_extensions.dart';
 import '../extensions/string_extensions.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  final bool updateLocation;
+  const HomeView({Key? key, this.updateLocation = true}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -25,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       RouteManager.initializeRoute(context);
-      Utils.enableLocationPermission();
+      Utils.enableLocationPermission(updateLocation: widget.updateLocation);
     });
   }
 
