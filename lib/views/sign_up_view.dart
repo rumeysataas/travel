@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
+import 'package:travel/services/auth_service.dart';
+import 'package:travel/services/state/user_state.dart';
 import 'package:travel/utils/utils.dart';
 import 'package:travel/views/login_view.dart';
 import 'package:travel/widgets/base/auth_base.dart';
 import '../extensions/context_extensions.dart';
+
+final UserState registerState = UserState();
 
 class SignUpView extends StatelessWidget {
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
@@ -46,7 +50,9 @@ class _AppHeader extends StatelessWidget {
           children: [
             Text('Hesabınız mı var? /', style: context.textTheme.subtitle1),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  RouteManager.newPage(LoginView());
+                },
                 child: Text(
                   'Giriş Yapın',
                   style:
@@ -70,6 +76,10 @@ class _AppForm extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            onSaved: (String? val) {
+              registerState.setEmail = val;
+            },
             validator: (String? val) {
               if (val!.isEmpty) {
                 return "Lütfen e-posta adresinizi belirtin";
@@ -85,9 +95,13 @@ class _AppForm extends StatelessWidget {
           ),
           SizedBox(height: 10),
           TextFormField(
+            obscureText: true,
+            onSaved: (String? val) {
+              registerState.setPassword = val;
+            },
             validator: (String? val) {
-              if (val!.length < 6) {
-                return "Lütfen şifreniz için en az 6 karakter girin";
+              if (val!.length < 9) {
+                return "Lütfen şifreniz için en az 9 karakter girin";
               }
               return null;
             },
@@ -97,6 +111,9 @@ class _AppForm extends StatelessWidget {
           ),
           SizedBox(height: 10),
           TextFormField(
+            onSaved: (String? val) {
+              registerState.setName = val;
+            },
             validator: (String? val) {
               if (val!.length < 3) {
                 return "Adınız çok kısa";
@@ -120,7 +137,8 @@ class _AppRegister extends StatelessWidget {
   void _register() {
     if (this.formKey.currentState!.validate()) {
       this.formKey.currentState!.save();
-      print('ok');
+      AuthService.instance.signUp(
+          registerState.email, registerState.password, registerState.name);
     }
   }
 

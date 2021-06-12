@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:travel/services/auth_service.dart';
 
 extension ContextExtensions on BuildContext {
   double get phoneWidth => MediaQuery.of(this).size.width;
@@ -9,4 +10,5 @@ extension ContextExtensions on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
   bool get isKeyboardOpen =>
       MediaQuery.of(this).viewInsets.bottom != 0 ? true : false;
+  AppUser? get currentUser => AuthService.instance.currentUser;
 }

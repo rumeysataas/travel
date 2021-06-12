@@ -13,11 +13,28 @@ class RouteManager {
         .push(MaterialPageRoute(builder: (routeContext) => view));
   }
 
+  static newPageReplacement(Widget view) {
+    Navigator.of(routeContext)
+        .pushReplacement(MaterialPageRoute(builder: (routeContext) => view));
+  }
+
   static backPage() {
     Navigator.of(routeContext).pop();
   }
 
-  static showErrorDialog() {
-    showDialog(context: routeContext, builder: (_) => AlertDialog());
+  static showErrorDialog(String errorText) {
+    showDialog(
+        context: routeContext,
+        builder: (_) => AlertDialog(
+              title: Text('Ups 🙄'),
+              content: Text(errorText),
+              actions: [
+                ElevatedButton(
+                    onPressed: () {
+                      RouteManager.backPage();
+                    },
+                    child: Text('Geri Dön'))
+              ],
+            ));
   }
 }
