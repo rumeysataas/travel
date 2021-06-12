@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
-import 'package:travel/views/sign_up_view.dart';
 import '../extensions/context_extensions.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class SignUpView extends StatelessWidget {
+  const SignUpView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,20 +48,18 @@ class _AppHeader extends StatelessWidget {
               .copyWith(fontWeight: FontWeight.bold),
         ),
         Text(
-          'Giriş Yapın',
+          'Kayıt Olun',
           style: context.textTheme.headline4!
               .copyWith(fontWeight: FontWeight.w300),
         ),
         Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            Text('Yeni misiniz? /', style: context.textTheme.subtitle1),
+            Text('Hesabınız mı var? /', style: context.textTheme.subtitle1),
             TextButton(
-                onPressed: () {
-                  RouteManager.newPage(SignUpView());
-                },
+                onPressed: () {},
                 child: Text(
-                  'Hesap Oluşturun',
+                  'Giriş Yapın',
                   style:
                       context.textTheme.subtitle1!.copyWith(color: Colors.blue),
                 ))
