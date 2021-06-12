@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
+import 'package:travel/views/map_view.dart';
 import 'package:travel/widgets/app_advice_card.dart';
 import 'package:travel/widgets/app_card.dart';
 import '../extensions/context_extensions.dart';
@@ -105,7 +106,9 @@ class _Places extends StatelessWidget {
                       imageUrl: 'restaurant.svg',
                       title: 'Restoranlar',
                       subtitle: 'Güzel Lezzetler',
-                      onTap: () {},
+                      onTap: () {
+                        RouteManager.newPage(MapView());
+                      },
                     ),
                     AppCard(
                       imageUrl: 'bar.svg',
