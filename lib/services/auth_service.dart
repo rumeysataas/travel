@@ -19,8 +19,8 @@ class AuthService {
 
   AppUser? currentUser;
 
-  autoLogin() {
-    _findUser(FirebaseAuth.instance.currentUser);
+  autoLogin() async {
+    await _findUser(FirebaseAuth.instance.currentUser);
     RouteManager.newPageReplacement(HomeView());
   }
 
