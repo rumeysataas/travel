@@ -8,8 +8,21 @@ import 'package:travel/widgets/app_card.dart';
 import '../extensions/context_extensions.dart';
 import '../extensions/string_extensions.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
+
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      RouteManager.initializeRoute(context);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

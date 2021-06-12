@@ -15,8 +15,8 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    RouteManager.initializeRoute(context);
     WidgetsBinding.instance?.addPostFrameCallback((_) {
+      RouteManager.initializeRoute(context);
       if (FirebaseAuth.instance.currentUser != null) {
         AuthService.instance.autoLogin();
       } else {

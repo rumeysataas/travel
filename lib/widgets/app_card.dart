@@ -25,30 +25,33 @@ class AppCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 10),
       height: double.infinity,
       width: 250,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: SvgPicture.asset(
-              'assets/images/${this.imageUrl}',
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                this.title,
-                style: context.textTheme.headline5!
-                    .copyWith(fontWeight: FontWeight.bold),
+      child: InkWell(
+        onTap: this.onTap,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: SvgPicture.asset(
+                'assets/images/${this.imageUrl}',
               ),
-              Text(
-                this.subtitle,
-                style: context.textTheme.headline6,
-              )
-            ],
-          )
-        ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  this.title,
+                  style: context.textTheme.headline5!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  this.subtitle,
+                  style: context.textTheme.headline6,
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
