@@ -28,9 +28,12 @@ class AppAdviceCard extends StatelessWidget {
               size: 30,
             ),
             SizedBox(height: 5),
-            Text(
-              this.title,
-              style: context.textTheme.subtitle1,
+            Flexible(
+              child: Text(
+                this.title,
+                overflow: TextOverflow.ellipsis,
+                style: context.textTheme.subtitle1,
+              ),
             )
           ],
         ),

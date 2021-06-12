@@ -6,8 +6,8 @@ extension StringExtensions on String {
     if (splitted.length == 1) {
       return value[0].toUpperCase();
     } else {
-      return (splitted[0] as String).toLowerCase() +
-          (splitted[1] as String).toLowerCase();
+      return (splitted[0][0] as String).toUpperCase() +
+          (splitted[1][0] as String).toUpperCase();
     }
   }
 }

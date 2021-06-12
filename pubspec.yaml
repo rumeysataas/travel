@@ -37,6 +37,7 @@ dependencies:
   geolocator: ^7.1.0
   shared_preferences: ^2.0.6
   url_launcher: ^6.0.6
+  device_preview: ^0.7.3
 
 dev_dependencies:
   flutter_test:

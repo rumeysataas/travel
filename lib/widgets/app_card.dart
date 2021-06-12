@@ -24,7 +24,7 @@ class AppCard extends StatelessWidget {
           color: Color(0xffdedede), borderRadius: BorderRadius.circular(30)),
       margin: const EdgeInsets.symmetric(horizontal: 10),
       height: double.infinity,
-      width: 250,
+      width: context.phoneWidth <= 320 ? 200 : 250,
       child: InkWell(
         onTap: this.onTap,
         child: Column(
