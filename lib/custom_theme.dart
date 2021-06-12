@@ -9,6 +9,9 @@ final appOutlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(12));
 
 ThemeData customTheme = ThemeData(
+    appBarTheme: AppBarTheme(
+      centerTitle: true,
+    ),
     primaryColor: Colors.blue[800],
     inputDecorationTheme: InputDecorationTheme(
         filled: true,

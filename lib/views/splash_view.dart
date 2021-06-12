@@ -16,17 +16,21 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      RouteManager.initializeRoute(context);
-      if (FirebaseAuth.instance.currentUser != null) {
-        AuthService.instance.autoLogin();
-      } else {
-        RouteManager.newPage(LoginView());
-      }
+      Future.delayed(kThemeChangeDuration).then((_) {
+        RouteManager.initializeRoute(context);
+        if (FirebaseAuth.instance.currentUser != null) {
+          AuthService.instance.autoLogin();
+        } else {
+          RouteManager.newPage(LoginView());
+        }
+      });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(child: Image.asset('assets/images/splash.gif')),
+    );
   }
 }

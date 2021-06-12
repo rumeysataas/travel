@@ -1,6 +1,7 @@
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:travel/core/router_manager.dart';
 import 'package:travel/services/places.dart';
+import '../views/ask_permission.dart';
 
 class Utils {
   static controlMail(String text) {
@@ -19,16 +20,14 @@ class Utils {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      //TODO: OPEN PERMISSION PAGE
-      return Future.error('Location services are disabled.');
+      RouteManager.newPage(AskPermission());
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        //TODO: OPEN PERMISSION PAGE
-        return Future.error('Location permissions are denied');
+        RouteManager.newPage(AskPermission());
       }
     }
 

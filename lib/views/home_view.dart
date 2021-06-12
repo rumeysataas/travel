@@ -6,6 +6,7 @@ import 'package:travel/services/places.dart';
 import 'package:travel/utils/utils.dart';
 import 'package:travel/views/map_view.dart';
 import 'package:travel/views/search_place.dart';
+import 'package:travel/views/user_settings.dart';
 import 'package:travel/widgets/app_advice_card.dart';
 import 'package:travel/widgets/app_card.dart';
 import '../extensions/context_extensions.dart';
@@ -55,8 +56,15 @@ class _AppBar extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              onTap: () {},
+              onTap: () {
+                RouteManager.newPage(UserSettings());
+              },
               leading: CircleAvatar(
+                child: Text(
+                  '${context.currentUser?.name?.avatarValue}',
+                  style: context.textTheme.headline6?.copyWith(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
                 radius: 30,
               ),
               title: Text('Welcome', style: context.textTheme.subtitle1),

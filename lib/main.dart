@@ -9,6 +9,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await Storage.initialStorage();
+  if (Storage.getString('mapType') == null) {
+    Storage.saveString('mapType', 'Normal');
+    print(Storage.getString('mapType'));
+  }
   runApp(MyApp());
 }
 

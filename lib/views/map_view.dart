@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:travel/core/storage.dart';
 import 'package:travel/services/places.dart';
 import 'package:travel/widgets/app_map_place.dart';
 import '../custom_theme.dart';
@@ -16,8 +17,27 @@ class MapView extends StatefulWidget {
 
 class _MapViewState extends State<MapView> {
   Completer<GoogleMapController> _controller = Completer();
+
   @override
   Widget build(BuildContext context) {
+    MapType mapType = MapType.normal;
+
+    switch (Storage.getString('mapType')) {
+      case 'Normal':
+        mapType = MapType.normal;
+        break;
+      case 'Satelitte':
+        mapType = MapType.satellite;
+        break;
+      case 'Hybird':
+        mapType = MapType.hybrid;
+        break;
+      case 'Terrain':
+        mapType = MapType.terrain;
+        break;
+    }
+    print(mapType);
+
     return Scaffold(
       body: SafeArea(
         child: AnimatedBuilder(
@@ -32,7 +52,7 @@ class _MapViewState extends State<MapView> {
                       _controller.complete(controller);
                     },
                     myLocationEnabled: true,
-                    mapType: MapType.normal,
+                    mapType: mapType,
                     markers: Places.instance.nearbyPlaces
                         .map(
                           (place) => Marker(
