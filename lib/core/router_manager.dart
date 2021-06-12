@@ -12,4 +12,8 @@ class RouteManager {
     Navigator.of(routeContext)
         .push(MaterialPageRoute(builder: (routeContext) => view));
   }
+
+  static backPage() {
+    Navigator.of(routeContext).pop();
+  }
 }

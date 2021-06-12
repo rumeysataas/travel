@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
 import 'package:travel/views/sign_up_view.dart';
+import 'package:travel/widgets/base/auth_base.dart';
 import '../extensions/context_extensions.dart';
 
 class LoginView extends StatelessWidget {
@@ -10,29 +11,14 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Positioned(
-              top: 20,
-              left: -30 / 2 - 30 / 2,
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.black,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(appDefaultPadding),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [_AppHeader(), _AppForm(), _AppLogin()],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
+    return AuthBase(children: [
+      SizedBox(height: context.phoneHeight * .1),
+      _AppHeader(),
+      SizedBox(height: context.phoneHeight * .05),
+      _AppForm(),
+      SizedBox(height: context.phoneHeight * .05),
+      _AppLogin(),
+    ]);
   }
 }
 
