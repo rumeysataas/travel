@@ -45,9 +45,7 @@ class _AppHeader extends StatelessWidget {
           children: [
             Text('Yeni misiniz? /', style: context.textTheme.subtitle1),
             TextButton(
-                onPressed: () {
-                  RouteManager.newPage(SignUpView());
-                },
+                onPressed: () {},
                 child: Text(
                   'Hesap Oluşturun',
                   style:

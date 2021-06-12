@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RouteManager {
-  static BuildContext? routeContext;
+  static var routeContext;
 
   static initializeRoute(BuildContext context) {
     routeContext = context;
@@ -15,5 +15,9 @@ class RouteManager {
 
   static backPage() {
     Navigator.of(routeContext).pop();
+  }
+
+  static showErrorDialog() {
+    showDialog(context: routeContext, builder: (_) => AlertDialog());
   }
 }

@@ -46,9 +46,7 @@ class _AppHeader extends StatelessWidget {
           children: [
             Text('Hesabınız mı var? /', style: context.textTheme.subtitle1),
             TextButton(
-                onPressed: () {
-                  RouteManager.newPage(LoginView());
-                },
+                onPressed: () {},
                 child: Text(
                   'Giriş Yapın',
                   style:
