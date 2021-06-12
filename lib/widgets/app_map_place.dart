@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:travel/models/PlaceModel.dart';
 import '../extensions/context_extensions.dart';

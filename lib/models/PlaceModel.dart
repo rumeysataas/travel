@@ -1,5 +1,3 @@
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 class PlaceModel {
   final String vicinity;
   var rating;

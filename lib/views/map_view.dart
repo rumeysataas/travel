@@ -5,7 +5,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:travel/core/storage.dart';
 import 'package:travel/services/places.dart';
 import 'package:travel/widgets/app_map_place.dart';
-import '../custom_theme.dart';
 import '../extensions/context_extensions.dart';
 
 class MapView extends StatefulWidget {

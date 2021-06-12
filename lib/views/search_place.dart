@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/storage.dart';
@@ -8,7 +6,6 @@ import 'package:travel/models/PlaceModel.dart';
 import 'package:travel/services/places.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../extensions/string_extensions.dart';
-import 'package:http/http.dart' as http;
 
 class SearchPlace extends SearchDelegate {
   @override
