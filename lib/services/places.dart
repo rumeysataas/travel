@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:travel/models/PlaceModel.dart';
+import '../constants/constants.dart';
 
 class Places extends ChangeNotifier {
   Places._privateConstructor();
@@ -10,7 +11,6 @@ class Places extends ChangeNotifier {
   static Places get instance => _instance;
 
   Map currentPosition = {'lat': 0, 'lng': 0};
-  final String apiKey = 'AIzaSyBhkqWwerZVw_3CmtTzE1bloovjDydybLw';
 
   List<PlaceModel> nearbyPlaces = [];
   List<PlaceModel> searchResults = [];
