@@ -4,6 +4,7 @@ import 'package:travel/core/router_manager.dart';
 import 'package:travel/core/storage.dart';
 import 'package:travel/views/change_city.dart';
 import 'package:travel/views/login_view.dart';
+import 'package:travel/views/update_user_info_view.dart';
 import '../extensions/context_extensions.dart';
 
 class UserSettings extends StatefulWidget {
@@ -54,25 +55,46 @@ class _UserSettingsState extends State<UserSettings> {
                 }).toList(),
               ),
             ),
-            ListTile(
-              onTap: () {
-                RouteManager.newPage(ChangeCity());
-              },
-              title: Text('Şehir Değiştir', style: context.textTheme.headline5),
-              trailing: Icon(Icons.map, color: context.primaryColor, size: 35),
-            ),
-            ListTile(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                RouteManager.newPageReplacement(LoginView());
-              },
-              title: Text('Çıkış Yap', style: context.textTheme.headline5),
-              trailing:
-                  Icon(Icons.logout, color: context.primaryColor, size: 35),
-            ),
+            _AppUserSettingsItem(
+                onTap: () {
+                  RouteManager.newPage(ChangeCity());
+                },
+                title: 'Şehir Değiştir',
+                icon: Icons.map),
+            _AppUserSettingsItem(
+                onTap: () {
+                  RouteManager.newPage(UpdateUserInfoView());
+                },
+                title: 'Hesap Ayarlarım',
+                icon: Icons.settings),
+            _AppUserSettingsItem(
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  RouteManager.newPageReplacement(LoginView());
+                },
+                title: 'Çıkış Yap',
+                icon: Icons.logout)
           ],
         ),
       ),
+    );
+  }
+}
+
+class _AppUserSettingsItem extends StatelessWidget {
+  final VoidCallback onTap;
+  final String title;
+  final IconData icon;
+  const _AppUserSettingsItem(
+      {Key? key, required this.onTap, required this.title, required this.icon})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: this.onTap,
+      title: Text(this.title, style: context.textTheme.headline5),
+      trailing: Icon(this.icon, color: context.primaryColor, size: 35),
     );
   }
 }

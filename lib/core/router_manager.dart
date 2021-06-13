@@ -38,6 +38,13 @@ class RouteManager {
             ));
   }
 
+  static showCustomDialog(String text, List<Widget> actions) {
+    showDialog(
+        context: routeContext,
+        builder: (_) => AlertDialog(
+            title: Text('Harika 😊'), content: Text(text), actions: actions));
+  }
+
   static showSearchDelagate(SearchDelegate delegate) {
     showSearch(context: routeContext, delegate: delegate);
   }

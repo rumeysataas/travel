@@ -6,9 +6,12 @@ import 'package:travel/services/places.dart';
 import 'package:travel/utils/utils.dart';
 import 'package:travel/views/map_view.dart';
 import 'package:travel/views/search_place.dart';
+import 'package:travel/views/search_video.dart';
+import 'package:travel/views/update_user_info_view.dart';
 import 'package:travel/views/user_settings.dart';
 import 'package:travel/widgets/app_advice_card.dart';
 import 'package:travel/widgets/app_card.dart';
+import 'package:travel/widgets/menu.dart';
 import '../extensions/context_extensions.dart';
 import '../extensions/string_extensions.dart';
 
@@ -21,6 +24,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +40,8 @@ class _HomeViewState extends State<HomeView> {
     print(context.currentUser?.name);
     print(MediaQuery.of(context).size.width);
     return Scaffold(
+      key: scaffoldKey,
+      drawer: Menu(),
       body: SafeArea(child: LayoutBuilder(
         builder: (_, constraints) {
           print(constraints);
@@ -43,7 +50,8 @@ class _HomeViewState extends State<HomeView> {
               child: Column(
                 children: [
                   Container(
-                      height: context.phoneHeight * .25, child: _AppBar()),
+                      height: context.phoneHeight * .25,
+                      child: _AppBar(scaffoldKey: this.scaffoldKey)),
                   Container(height: context.phoneHeight * .6, child: _Places()),
                   Container(height: context.phoneHeight * .3, child: _Advices())
                 ],
@@ -52,7 +60,8 @@ class _HomeViewState extends State<HomeView> {
           } else {
             return Column(
               children: [
-                Expanded(flex: 1, child: _AppBar()),
+                Expanded(
+                    flex: 1, child: _AppBar(scaffoldKey: this.scaffoldKey)),
                 Expanded(flex: 3, child: _Places()),
                 Expanded(flex: 1, child: _Advices())
               ],
@@ -65,7 +74,8 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class _AppBar extends StatelessWidget {
-  const _AppBar({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const _AppBar({Key? key, required this.scaffoldKey}) : super(key: key);
 
   void openSearch() {
     RouteManager.showSearchDelagate(SearchPlace());
@@ -74,23 +84,16 @@ class _AppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ListTile(
-          onTap: () {
-            RouteManager.newPage(UserSettings());
-          },
-          leading: CircleAvatar(
-            child: Text(
-              '${context.currentUser?.name?.avatarValue}',
-              style: context.textTheme.headline6
-                  ?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            radius: 30,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: IconButton(
+            icon: Icon(FontAwesomeIcons.bars),
+            onPressed: () {
+              this.scaffoldKey.currentState?.openDrawer();
+            },
           ),
-          title: Text('Welcome', style: context.textTheme.subtitle1),
-          subtitle: Text('${context.currentUser?.name?.capitalize}',
-              style: context.textTheme.headline5),
-          trailing: Icon(FontAwesomeIcons.cogs, color: context.primaryColor),
         ),
         Expanded(
           child: Container(

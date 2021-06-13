@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/views/home_view.dart';
+import 'package:travel/views/login_view.dart';
 
 class AppUser {
   final String? email;
@@ -22,6 +23,11 @@ class AuthService {
   autoLogin() async {
     await _findUser(FirebaseAuth.instance.currentUser);
     RouteManager.newPageReplacement(HomeView());
+  }
+
+  logout() {
+    FirebaseAuth.instance.signOut();
+    RouteManager.newPageReplacement(LoginView());
   }
 
   signUp(String email, String password, String name) async {
