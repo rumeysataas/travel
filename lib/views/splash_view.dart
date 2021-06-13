@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/services/auth_service.dart';
 import 'package:travel/views/login_view.dart';
@@ -29,6 +30,9 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     return Scaffold(
       body: Center(child: Image.asset('assets/images/splash.gif')),
     );

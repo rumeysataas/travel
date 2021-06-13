@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/storage.dart';
 import 'package:travel/custom_theme.dart';
@@ -20,6 +21,9 @@ class SearchPlace extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     if (Storage.getList('search') == null) {
       print('new created!');
       Storage.saveList('search', []);

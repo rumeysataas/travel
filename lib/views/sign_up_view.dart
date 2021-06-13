@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
@@ -16,6 +17,9 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     return AuthBase(children: [
       SizedBox(height: context.phoneHeight * .1),
       _AppHeader(),

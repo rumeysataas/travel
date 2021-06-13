@@ -20,6 +20,9 @@ class ChangeCity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Şehir Değiştir'),

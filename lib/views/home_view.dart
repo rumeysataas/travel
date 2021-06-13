@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
@@ -163,7 +164,7 @@ class _Places extends StatelessWidget {
                 ),
                 AppCard(
                   imageUrl: 'bar.svg',
-                  title: 'Gece Kulüpleri',
+                  title: 'Bar ve Kafeler',
                   subtitle: 'Biraz Eğlence!',
                   onTap: () {
                     RouteManager.newPage(MapView());
@@ -193,6 +194,9 @@ class _Advices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     return Padding(
       padding: const EdgeInsets.symmetric(
           horizontal: appDefaultPadding, vertical: 10),
@@ -218,7 +222,9 @@ class _Advices extends StatelessWidget {
                 AppAdviceCard(
                     icon: FontAwesomeIcons.youtube,
                     title: 'Videolar',
-                    onTap: () {}),
+                    onTap: () {
+                      RouteManager.newPage(SearchVideo());
+                    }),
               ],
             ),
           )

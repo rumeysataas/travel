@@ -76,7 +76,7 @@ class Menu extends StatelessWidget {
         ),
         ListTile(
           leading: Icon(Icons.nightlife, color: context.primaryColor),
-          title: Text('Bar'),
+          title: Text('Bar ve Kafeler'),
           onTap: () {
             RouteManager.newPage(MapView());
             Places.instance.filterNearbyPlaces('bar');

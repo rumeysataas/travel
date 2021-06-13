@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
 import 'package:travel/services/auth_service.dart';
@@ -67,6 +68,9 @@ class _UpdateUserInfoViewState extends State<UpdateUserInfoView> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     return Scaffold(
         appBar: AppBar(
           title: Text('Bilgilerimi Güncelle'),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:travel/core/storage.dart';
 import 'package:travel/services/places.dart';
@@ -19,6 +20,9 @@ class _MapViewState extends State<MapView> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
     MapType mapType = MapType.normal;
 
     switch (Storage.getString('mapType')) {
