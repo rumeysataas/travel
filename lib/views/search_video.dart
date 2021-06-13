@@ -48,7 +48,7 @@ class _SearchVideoState extends State<SearchVideo> {
                     message: 'İzle',
                     child: ListTile(
                       onTap: () {
-                        RouteManager.newPage(WatchVideo());
+                        RouteManager.newPage(WatchVideo(videoModel: video));
                       },
                       leading: Container(
                           width: 70,

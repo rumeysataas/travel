@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context), // Add the locale here
       builder: DevicePreview.appBuilder, // Add the builder here
       theme: customTheme,

@@ -38,6 +38,7 @@ dependencies:
   shared_preferences: ^2.0.6
   url_launcher: ^6.0.6
   device_preview: ^0.7.3
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:
