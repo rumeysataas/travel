@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,9 @@ import 'package:travel/core/router_manager.dart';
 import 'package:travel/custom_theme.dart';
 import 'package:travel/services/auth_service.dart';
 import 'package:travel/utils/utils.dart';
+import 'package:travel/views/confirm_photo.dart';
 import '../extensions/context_extensions.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UpdateUserInfoView extends StatefulWidget {
   const UpdateUserInfoView({Key? key}) : super(key: key);
@@ -21,6 +25,14 @@ class _UpdateUserInfoViewState extends State<UpdateUserInfoView> {
   String password = '';
   final GlobalKey<FormState> formSettingsKey = GlobalKey<FormState>();
   final GlobalKey<FormState> formSecurityKey = GlobalKey<FormState>();
+
+  final picker = ImagePicker();
+
+  _getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    File _image = File(pickedFile!.path);
+    RouteManager.newPage(ConfirmPhoto(image: _image));
+  }
 
   void _updateUserInfo() async {
     if (formSettingsKey.currentState!.validate()) {
@@ -165,6 +177,21 @@ class _UpdateUserInfoViewState extends State<UpdateUserInfoView> {
                                   child: Text('Şifremi Değiştir')))
                         ],
                       ),
+                    )
+                  ],
+                ),
+                ExpansionTile(
+                  title:
+                      Text('Profil Resmi', style: context.textTheme.headline5),
+                  children: [
+                    ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                          primary: context.primaryColor),
+                      onPressed: () {
+                        _getImage();
+                      },
+                      label: Text('Profil Fotoğrafımı Değiştir'),
+                      icon: Icon(Icons.image),
                     )
                   ],
                 )

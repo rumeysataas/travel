@@ -7,6 +7,7 @@ import 'package:travel/views/delegates/search_place.dart';
 import 'package:travel/views/search_video.dart';
 import 'package:travel/views/update_user_info_view.dart';
 import 'package:travel/views/user_settings.dart';
+import 'package:travel/widgets/app_avatar.dart';
 import '../extensions/context_extensions.dart';
 import '../extensions/string_extensions.dart';
 
@@ -28,12 +29,7 @@ class Menu extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 30,
-                  child: Text('${context.currentUser?.name?.avatarValue}',
-                      style: context.textTheme.headline5),
-                ),
+                AppAvatar(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

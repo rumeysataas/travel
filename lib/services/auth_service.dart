@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/views/home_view.dart';
 import 'package:travel/views/login_view.dart';
@@ -8,8 +9,13 @@ class AppUser {
   final String? email;
   final String? name;
   final String? uid;
+  String? profilePhoto;
 
-  AppUser({required this.email, required this.name, required this.uid});
+  AppUser(
+      {required this.email,
+      required this.name,
+      required this.uid,
+      required this.profilePhoto});
 }
 
 class AuthService {
@@ -64,12 +70,36 @@ class AuthService {
     return result.docs.length == 0 ? true : false;
   }
 
+  newProfilePhoto(String path) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('accounts')
+          .doc(currentUser?.uid)
+          .update({"profilePhoto": path});
+      currentUser?.profilePhoto = path;
+      RouteManager.showCustomDialog('Profil fotoğrafınız değiştirildi. 🖼', [
+        ElevatedButton(
+            onPressed: () {
+              RouteManager.newPageReplacement(HomeView());
+            },
+            child: Text('Tamam '))
+      ]);
+    } catch (e) {
+      print(e);
+      RouteManager.showErrorDialog(
+          'Beklenmedik bir hata oluştu. Lütfen tekrar dener misiniz?');
+    }
+  }
+
   _createAccount(User? user, String name) async {
-    await FirebaseFirestore.instance
-        .collection('accounts')
-        .doc(user?.uid)
-        .set({"email": user?.email, "uid": user?.uid, "name": name});
-    currentUser = AppUser(email: user?.email, uid: user?.uid, name: name);
+    await FirebaseFirestore.instance.collection('accounts').doc(user?.uid).set({
+      "email": user?.email,
+      "uid": user?.uid,
+      "name": name,
+      "profilePhoto": "na"
+    });
+    currentUser = AppUser(
+        email: user?.email, uid: user?.uid, name: name, profilePhoto: "na");
     print(currentUser?.name);
   }
 
@@ -78,7 +108,10 @@ class AuthService {
         .collection('accounts')
         .doc(user?.uid)
         .get();
-    currentUser =
-        AppUser(email: user?.email, uid: user?.uid, name: result['name']);
+    currentUser = AppUser(
+        email: user?.email,
+        uid: user?.uid,
+        name: result['name'],
+        profilePhoto: result['profilePhoto']);
   }
 }
