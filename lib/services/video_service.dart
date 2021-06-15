@@ -13,6 +13,7 @@ class VideoService extends ChangeNotifier {
   List<VideoModel> videos = [];
 
   listVideos({String query = 'gezilesiyer'}) async {
+    videos = [];
     final result = await http.get(Uri.parse(
         'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=$query&type=video&key=$apiKey'));
     final json = jsonDecode(result.body);

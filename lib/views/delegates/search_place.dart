@@ -6,7 +6,7 @@ import 'package:travel/custom_theme.dart';
 import 'package:travel/models/PlaceModel.dart';
 import 'package:travel/services/places.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../extensions/string_extensions.dart';
+import '../../extensions/string_extensions.dart';
 
 class SearchPlace extends SearchDelegate {
   @override

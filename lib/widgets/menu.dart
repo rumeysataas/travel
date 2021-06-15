@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel/core/router_manager.dart';
 import 'package:travel/services/places.dart';
 import 'package:travel/views/map_view.dart';
-import 'package:travel/views/search_place.dart';
+import 'package:travel/views/delegates/search_place.dart';
 import 'package:travel/views/search_video.dart';
 import 'package:travel/views/update_user_info_view.dart';
 import 'package:travel/views/user_settings.dart';

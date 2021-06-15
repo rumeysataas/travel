@@ -6,15 +6,12 @@ import 'package:travel/custom_theme.dart';
 import 'package:travel/services/places.dart';
 import 'package:travel/utils/utils.dart';
 import 'package:travel/views/map_view.dart';
-import 'package:travel/views/search_place.dart';
+import 'package:travel/views/delegates/search_place.dart';
 import 'package:travel/views/search_video.dart';
-import 'package:travel/views/update_user_info_view.dart';
-import 'package:travel/views/user_settings.dart';
 import 'package:travel/widgets/app_advice_card.dart';
 import 'package:travel/widgets/app_card.dart';
 import 'package:travel/widgets/menu.dart';
 import '../extensions/context_extensions.dart';
-import '../extensions/string_extensions.dart';
 
 class HomeView extends StatefulWidget {
   final bool updateLocation;

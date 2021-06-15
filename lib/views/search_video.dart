@@ -8,6 +8,7 @@ import 'package:travel/models/VideoModel.dart';
 import 'package:travel/services/video_service.dart';
 import 'package:travel/views/watch_video.dart';
 import '../extensions/context_extensions.dart';
+import '../views/delegates/search_video.dart';
 
 class SearchVideo extends StatefulWidget {
   const SearchVideo({Key? key}) : super(key: key);
@@ -31,7 +32,9 @@ class _SearchVideoState extends State<SearchVideo> {
           actions: [
             IconButton(
               icon: Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                RouteManager.showSearchDelagate(SearchVideoDelegate());
+              },
             )
           ],
         ),

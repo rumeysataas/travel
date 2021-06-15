@@ -1,9 +1,8 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:travel/custom_theme.dart';
 import 'package:travel/views/splash_view.dart';
-
 import 'core/storage.dart';
 
 void main() async {
@@ -14,10 +13,7 @@ void main() async {
     Storage.saveString('mapType', 'Normal');
     print(Storage.getString('mapType'));
   }
-  runApp(DevicePreview(
-    enabled: true,
-    builder: (context) => MyApp(), // Wrap your app
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,11 +23,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context), // Add the locale here
-      builder: DevicePreview.appBuilder, // Add the builder here
       theme: customTheme,
       title: 'Travel',
       home: SplashView(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
     );
   }
 }
