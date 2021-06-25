@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../extensions/context_extensions.dart';
 
+//Tavsiyeler altındaki cardlar
 class AppAdviceCard extends StatelessWidget {
   final IconData icon;
   final String title;

@@ -4,6 +4,7 @@ import 'package:travel/services/places.dart';
 import '../views/ask_permission.dart';
 
 class Utils {
+  //kayıt ve giriş işlemi sırasında kullancının mailini kontrol ederken kullandığımız fonksiyon
   static controlMail(String text) {
     if (RegExp(
             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
@@ -14,6 +15,7 @@ class Utils {
     }
   }
 
+  //kullanıcnın konumu al
   static enableLocationPermission({bool updateLocation = true}) async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -28,12 +30,13 @@ class Utils {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         RouteManager.newPage(AskPermission());
+        //eğer izin verilmemişse izin sayfasına yönlendir
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
       return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
+          'Konum izinleri kalıcı olarak reddedilir, izin isteyemeyiz.');
     }
     Position position = await Geolocator.getCurrentPosition();
     if (updateLocation) {
@@ -42,12 +45,13 @@ class Utils {
         'lng': position.longitude
       };
       print(Places.instance.currentPosition);
-      print('location updated');
+      print('konum güncellendi');
     } else {
-      print('no update!');
+      print('Güncelleme yapılamadı!');
     }
   }
 
+  //şehirleri return eden listemiz
   static turkeyProvinces() {
     List<String> provinces = [
       "Adana",

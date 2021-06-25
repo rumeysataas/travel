@@ -24,10 +24,12 @@ class SearchPlace extends SearchDelegate {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
+    //yeni arama sorgusu oluşturup arama geçmişine kayıt
     if (Storage.getList('search') == null) {
       print('new created!');
       Storage.saveList('search', []);
     }
+
     List<String> searchLog = Storage.getList('search');
     searchLog.insert(0, query);
     Storage.saveList('search', searchLog);
@@ -72,15 +74,20 @@ class SearchPlace extends SearchDelegate {
     return Padding(
       padding: const EdgeInsets.all(appDefaultPadding),
       child: ListView.builder(
-        itemCount: (Storage.getList('search') as List<String>).length,
+        itemCount: Storage.getList('search') != null
+            ? (Storage.getList('search') as List<String>).length
+            : 0,
         itemBuilder: (_, index) {
-          final String log = (Storage.getList('search') as List<String>)[index];
+          final String log = Storage.getList('search') != null
+              ? (Storage.getList('search') as List<String>)[index]
+              : '';
           return ListTile(
             onTap: () {
               query = log;
             },
             title: Text(log.capitalize),
-            trailing: Icon(FontAwesomeIcons.searchLocation),
+            trailing:
+            Icon(FontAwesomeIcons.searchLocation),
           );
         },
       ),

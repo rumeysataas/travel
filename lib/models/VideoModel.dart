@@ -1,3 +1,5 @@
+
+//video sonuçları için göstereceğimiz videoId, başlık, küçük resim, yayımlanma tarihi ve açıklamayı tutan modelimiz.
 class VideoModel {
   final String videoId;
   final String title;

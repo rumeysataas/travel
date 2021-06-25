@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:travel/services/auth_service.dart';
 
+//Extensionlar ile kısayollar oluşturabiliriz
+// Burada context altından uygulamanın her yerinde kullanabileceğimiz kısayollar oluşturduk
 extension ContextExtensions on BuildContext {
   double get phoneWidth => MediaQuery.of(this).size.width;
   double get phoneHeight => MediaQuery.of(this).size.height;

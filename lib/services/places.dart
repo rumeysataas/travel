@@ -10,12 +10,14 @@ class Places extends ChangeNotifier {
   static final Places _instance = Places._privateConstructor();
   static Places get instance => _instance;
 
+  //kullanıcının konumu için kullanacağımız objemiz
   Map currentPosition = {'lat': 0, 'lng': 0};
 
   List<PlaceModel> nearbyPlaces = [];
   List<PlaceModel> searchResults = [];
 
   findNearbyPlaces() async {
+    //yakın yerler apiden konuma göre dönen sonuçlar
     print(currentPosition);
     final String nearbyPlacesAPI =
         "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition['lat']},${currentPosition['lng']}&radius=4500&key=$apiKey";
@@ -26,6 +28,8 @@ class Places extends ChangeNotifier {
   }
 
   filterNearbyPlaces(String type) async {
+    //yakın yerleri filtrelemek
+    //apiden dönen sonuçlar
     print(currentPosition);
     final String searchNearbyAPI =
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition['lat']},${currentPosition['lng']}&radius=1500&type=$type&key=$apiKey';
@@ -36,6 +40,8 @@ class Places extends ChangeNotifier {
   }
 
   searchPlace(String place) async {
+    //mekan arama
+    //apiden dönen sonuçlara göre mekan arama
     print(currentPosition);
     searchResults = [];
     final String searchNearbyAPI =
@@ -46,6 +52,7 @@ class Places extends ChangeNotifier {
     notifyListeners();
   }
 
+  //istek göndermek için sadece bu sınıfta kullanacağımız fonksiyon
   _sendRequest(String endpoint) async {
     final result = await http.get(Uri.parse(endpoint));
     final json = jsonDecode(result.body);

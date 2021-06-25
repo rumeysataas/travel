@@ -5,6 +5,7 @@ import 'package:travel/custom_theme.dart';
 import 'package:travel/utils/utils.dart';
 import '../extensions/context_extensions.dart';
 
+
 class AskPermission extends StatelessWidget {
   const AskPermission({Key? key}) : super(key: key);
 

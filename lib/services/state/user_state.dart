@@ -1,3 +1,5 @@
+
+//Giriş yapan kullanıcının bilgilerini kayıt edip ve okuduğumuz yer
 class UserState {
   String? _email;
   set setEmail(String? value) => this._email = value;

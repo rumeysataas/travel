@@ -21,6 +21,7 @@ class SearchVideoDelegate extends SearchDelegate {
     ];
   }
 
+
   @override
   Widget buildLeading(BuildContext context) {
     return Icon(Icons.video_call, color: Theme.of(context).primaryColor);

@@ -6,9 +6,12 @@ import 'package:travel/views/splash_view.dart';
 import 'core/storage.dart';
 
 void main() async {
+  //firebase servisini ve depolama servisini başlatıyoruz
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await Storage.initialStorage();
+
+
   if (Storage.getString('mapType') == null) {
     Storage.saveString('mapType', 'Normal');
     print(Storage.getString('mapType'));
@@ -24,11 +27,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: customTheme,
-      title: 'Travel',
-      home: SplashView(),
+      title: 'Gezi Rehberi',
+      home: SplashView(),  //ilk sayfamız
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,  //yerelleştirme için kullandığımız delegasyonlar
       ],
     );
   }

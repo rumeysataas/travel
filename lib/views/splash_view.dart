@@ -5,6 +5,7 @@ import 'package:travel/core/router_manager.dart';
 import 'package:travel/services/auth_service.dart';
 import 'package:travel/views/login_view.dart';
 
+
 class SplashView extends StatefulWidget {
   SplashView({Key? key}) : super(key: key);
 
@@ -12,6 +13,7 @@ class SplashView extends StatefulWidget {
   _SplashViewState createState() => _SplashViewState();
 }
 
+//Oturum açma yetkilendirilmesi
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {

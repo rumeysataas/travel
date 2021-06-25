@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const double appDefaultPadding = 30;
+const double appDefaultPadding = 30; //uygulamanın genelinde kullandığımız padding
 
-const Color appBlue = Color(0xff006994);
+const Color appBlue = Color(0xff006994); //uygulamamızın ana rengi
 
 final appOutlineInputBorder = OutlineInputBorder(
     borderSide: BorderSide(color: appBlue),
@@ -10,7 +10,7 @@ final appOutlineInputBorder = OutlineInputBorder(
 
 ThemeData customTheme = ThemeData(
     appBarTheme: AppBarTheme(
-      centerTitle: true,
+      centerTitle: true,          //appbar texti ortalansın
     ),
     primaryColor: Colors.blue[800],
     inputDecorationTheme: InputDecorationTheme(

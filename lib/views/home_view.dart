@@ -32,7 +32,7 @@ class _HomeViewState extends State<HomeView> {
       Utils.enableLocationPermission(updateLocation: widget.updateLocation);
     });
   }
-
+//a
   @override
   Widget build(BuildContext context) {
     print(context.currentUser?.name);

@@ -60,6 +60,7 @@ class AppMapPlace extends StatelessWidget {
                 ],
               ),
             )
+
           ],
         ),
       ),

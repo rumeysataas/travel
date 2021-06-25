@@ -41,6 +41,7 @@ class _MapViewState extends State<MapView> {
     }
     print(mapType);
 
+
     return Scaffold(
       body: SafeArea(
         child: AnimatedBuilder(
@@ -49,6 +50,7 @@ class _MapViewState extends State<MapView> {
               return Stack(
                 fit: StackFit.expand,
                 children: [
+                  //Gerçek zamanlı konum güncellemesi
                   GoogleMap(
                     myLocationButtonEnabled: true,
                     onMapCreated: (GoogleMapController controller) {

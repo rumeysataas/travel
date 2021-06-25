@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../../custom_theme.dart';
 
+
+//Kimlik yetkilendirmesi
+//kullanıcı daha önce oturum açmışsa otomatik olarak.
 class AuthBase extends StatelessWidget {
   final List<Widget> children;
   const AuthBase({Key? key, required this.children}) : super(key: key);

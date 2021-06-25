@@ -93,7 +93,7 @@ class Menu extends StatelessWidget {
             RouteManager.newPage(SearchVideo());
           },
         ),
-        ListTile(
+          ListTile(
           leading: Icon(FontAwesomeIcons.cogs, color: context.primaryColor),
           title: Text('Ayarlar'),
           onTap: () {

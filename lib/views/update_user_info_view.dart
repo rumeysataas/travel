@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +27,14 @@ class _UpdateUserInfoViewState extends State<UpdateUserInfoView> {
 
   final picker = ImagePicker();
 
+  //resim güncelleme fonksiyonu
   _getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     File _image = File(pickedFile!.path);
     RouteManager.newPage(ConfirmPhoto(image: _image));
   }
 
+  //genel ayar : ad ve eposta güncellemsini firebasede yapan fonksiyon
   void _updateUserInfo() async {
     if (formSettingsKey.currentState!.validate()) {
       formSettingsKey.currentState!.save();
@@ -58,6 +59,7 @@ class _UpdateUserInfoViewState extends State<UpdateUserInfoView> {
     }
   }
 
+  //Güvenlik kısmı : şifreyi firebasede güncelleyen fonksiyon
   void _updatePassword() async {
     if (formSecurityKey.currentState!.validate()) {
       formSecurityKey.currentState!.save();
@@ -92,7 +94,7 @@ class _UpdateUserInfoViewState extends State<UpdateUserInfoView> {
             child: Column(
               children: [
                 ExpansionTile(
-                  title: Text('Genel Ayarlarınız ℹ',
+                  title: Text('Genel Ayarlarınız',
                       style: context.textTheme.headline5),
                   children: [
                     Form(

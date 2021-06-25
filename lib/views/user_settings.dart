@@ -31,7 +31,7 @@ class _UserSettingsState extends State<UserSettings> {
             ListTile(
               title: Text('Harita Türü'),
               subtitle: DropdownButton<String>(
-                value: Storage.getString('mapType'),
+                value: Storage.getString('mapType'),  //Anahtar verilerini diskte saklar
                 icon: const Icon(Icons.arrow_downward),
                 iconSize: 24,
                 elevation: 16,

@@ -28,7 +28,7 @@ class _SearchVideoState extends State<SearchVideo> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Gezilesi Yerler'),
+          title: Text('Gezilecek Yerler'),
           actions: [
             IconButton(
               icon: Icon(Icons.search),
@@ -49,7 +49,8 @@ class _SearchVideoState extends State<SearchVideo> {
                   VideoModel video = VideoService.instance.videos[index];
                   return Tooltip(
                     message: 'İzle',
-                    child: ListTile(
+                    child:
+                    ListTile(
                       onTap: () {
                         RouteManager.newPage(WatchVideo(videoModel: video));
                       },

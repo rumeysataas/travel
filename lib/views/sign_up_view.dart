@@ -40,7 +40,7 @@ class _AppHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          'Travel',
+          'Gezi Rehberi',
           style: context.textTheme.headline4!
               .copyWith(fontWeight: FontWeight.bold),
         ),

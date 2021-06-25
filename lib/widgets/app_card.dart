@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:travel/custom_theme.dart';
 import '../extensions/context_extensions.dart';
 
+//Yerler altındaki cardlar
 class AppCard extends StatelessWidget {
   final String title;
   final String subtitle;

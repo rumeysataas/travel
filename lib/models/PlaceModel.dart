@@ -1,3 +1,5 @@
+
+//kendi oluşturduğumuz türler adres, puanlama, isim ve konum bilgilerini içeren model
 class PlaceModel {
   final String vicinity;
   var rating;
